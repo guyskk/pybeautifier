@@ -62,6 +62,8 @@ def setup_logging():
 
 def send(client, error, data):
     response = {'error': error, 'data': data}
+    if error:
+        logging.error(error)
     response = json.dumps(response, ensure_ascii=False)
     logging.debug('response size: %s' % len(response))
     client.sendall(response.encode('utf-8'))
