@@ -7,7 +7,7 @@ with open(join(dirname(__file__), 'README.md')) as f:
 
 setup(
     name='pybeautifier',
-    version='0.0.1',
+    version='0.0.2',
     description='Python beautifier tcp server',
     long_description=long_description,
     url='https://github.com/guyskk/pybeautifier',
@@ -19,8 +19,6 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
