@@ -25,6 +25,12 @@ Besides, you should install one or more of autopep8, yapf, isort based on your n
 
 It will listening tcp://127.0.0.1:36805
 
+Start at boot via systemd(Ubuntu16 or Arch Linux):
+    
+    $ wget https://raw.githubusercontent.com/guyskk/pybeautifier/master/pybeautifier.service
+    $ cp pybeautifier.service /usr/lib/systemd/system/
+    $ systemctl start pybeautifier
+    $ systemctl enable pybeautifier
 
 ## Protocol
 

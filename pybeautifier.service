@@ -1,0 +1,9 @@
+[Unit]
+Description=PyBeautifier daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/pybeautifier -d
+
+[Install]
+WantedBy=multi-user.target
