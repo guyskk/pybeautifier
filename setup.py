@@ -1,3 +1,4 @@
+# coding: utf-8
 from os.path import dirname, join
 
 from setuptools import setup
@@ -7,7 +8,7 @@ with open(join(dirname(__file__), 'README.md')) as f:
 
 setup(
     name='pybeautifier',
-    version='0.0.2',
+    version='0.1.0',
     description='Python beautifier tcp server',
     long_description=long_description,
     url='https://github.com/guyskk/pybeautifier',
@@ -20,12 +21,11 @@ setup(
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        "Operating System :: POSIX",
     ],
     keywords='beautifier autopep8 yapf isort',
-    py_modules=["pybeautifier", "pybeautifier_server"],
+    install_requires=['python-daemon>=2.1.2'],
+    py_modules=["pybeautifier"],
     entry_points={
         'console_scripts': [
             'pybeautifier=pybeautifier:main',
