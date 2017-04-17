@@ -29,10 +29,11 @@ except:
 try:
     from isort import SortImports
 
-    def isort(x, multi_line_output=None):
+    def isort(x, multi_line_output=None, line_length=79):
         return SortImports(
             file_contents=x,
-            multi_line_output=multi_line_output
+            multi_line_output=multi_line_output,
+            line_length=line_length,
         ).output
 except:
     isort = None
@@ -92,6 +93,13 @@ def handle(client, request):
     data = request.get('data', None)
     if not isinstance(data, str):
         return send(client, 'invalid data', None)
+
+    max_line_length = None
+    for formater in formaters:
+        max_line_length = formater.get('config', {}).get('max_line_length')
+        if max_line_length:
+            break
+
     for formater in formaters:
         name = formater.get('name', None)
         config = formater.get('config', {})
@@ -100,6 +108,8 @@ def handle(client, request):
         formater = FORMATERS[name]
         if formater is None:
             return send(client, 'formater {} not installed'.format(name), None)
+        if name == 'isort' and max_line_length:
+            config.setdefault('line_length', max_line_length)
         data = formater(data, **config)
     return send(client, None, data)
 
