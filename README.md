@@ -1,11 +1,11 @@
 # PyBeautifier
 
 Python beautifier tcp server based on autopep8, yapf, isort.  
-Only suport python3.3+ currently.
+Only suport Unix-like system and python3.3+ currently.
 
 ## Why
 
-Before this, I use [atom-beautify](https://github.com/guyskk/atom-beautify) to format my code, but it's too slow(about 3 seconds) because every format operation will create a new python process.
+Before this, I use [atom-beautify](https://github.com/Glavin001/atom-beautify) to format my code, but it's too slow(about 3 seconds) because every format operation will create a new python process.
 
 So I write the beautifier server in python and beautifier client in node.js, they communicate by tcp socket. It's performance is much better(about 300 ms).
 
