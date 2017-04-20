@@ -34,6 +34,8 @@ try:
             file_contents=x,
             multi_line_output=multi_line_output,
             line_length=line_length,
+            include_trailing_comma=True,
+            balanced_wrapping=True,
         ).output
 except:
     isort = None
