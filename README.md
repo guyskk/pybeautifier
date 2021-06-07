@@ -20,7 +20,7 @@ Besides, you should install one or more of autopep8, yapf, isort based on your n
     $ pybeautifier       # front ground process
     $ pybeautifier -d    # daemon process, logging to /tmp/pybeautifier.log
 
-It will listening tcp://{BEAUTIFIER_HOST}:{BEAUTIFIER_PORT}.
+It will start listening to tcp://${BEAUTIFIER_HOST}:${BEAUTIFIER_PORT}.
 
 Env variables:
 
