@@ -11,6 +11,7 @@ setup(
     version='0.1.2',
     description='Python beautifier tcp server',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url='https://github.com/guyskk/pybeautifier',
     author='guyskk',
     author_email='guyskk@qq.com',
