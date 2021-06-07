@@ -46,8 +46,10 @@ FORMATERS = {
     'autopep8': autopep8,
     'isort': isort
 }
-ADDRESS = ('127.0.0.1', 36805)
+HOST = os.getenv("BEAUTIFIER_HOST", "127.0.0.1")
+PORT = int(os.getenv("BEAUTIFIER_PORT", "36805"))
 
+ADDRESS = (HOST, PORT)
 
 def setup_logging():
     format = '[%(levelname)-5s %(asctime)s] %(message)s'

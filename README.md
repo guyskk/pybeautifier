@@ -20,7 +20,11 @@ Besides, you should install one or more of autopep8, yapf, isort based on your n
     $ pybeautifier       # front ground process
     $ pybeautifier -d    # daemon process, logging to /tmp/pybeautifier.log
 
-It will listening tcp://127.0.0.1:36805
+It will listening tcp://<HOST>:<PORT>.
+
+Env variables:
+BEAUTIFIER_HOST - IP address or hostname (Default: 127.0.0.1)
+BEAUTIFIER_PORT - Port number (Default: 36805)
 
 Start at boot via systemd(Ubuntu16 or Arch Linux):
 
