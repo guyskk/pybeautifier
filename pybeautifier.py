@@ -131,7 +131,7 @@ def serve():
         while True:
             client, addr = server.accept()
             try:
-                request = client.recv(1024 * 1024).decode('utf-8')
+                request = read_message(client)
                 logging.debug('request size: %s' % len(request))
                 if request:
                     handle(client, json.loads(request))
@@ -151,6 +151,22 @@ def serve():
         logging.exception(ex)
     finally:
         server.close()
+
+
+def read_message(client) -> str:
+    data = ''
+    while True:
+        try:
+            chunk = client.recv(4096)  # some 2^n number
+            if not chunk:  # chunk == ''
+                break
+
+            data += chunk.decode('utf-8')
+
+        except socket.error:
+            client.close()
+            break
+    return data
 
 
 def main():
