@@ -13,7 +13,8 @@ try:
     def autopep8(x, ignore=None, max_line_length=79):
         return fix_code(x, options={
             'ignore': ignore,
-            'max_line_length': max_line_length
+            'max_line_length': max_line_length,
+            'experimental': True
         })
 except:
     autopep8 = None
