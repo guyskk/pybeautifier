@@ -8,7 +8,7 @@ with open(join(dirname(__file__), 'README.md')) as f:
 
 setup(
     name='pybeautifier',
-    version='0.1.2',
+    version='0.1.3',
     description='Python beautifier tcp server',
     long_description=long_description,
     long_description_content_type="text/markdown",
