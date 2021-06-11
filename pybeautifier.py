@@ -13,7 +13,8 @@ try:
     def autopep8(x, ignore=None, max_line_length=79):
         return fix_code(x, options={
             'ignore': ignore,
-            'max_line_length': max_line_length
+            'max_line_length': max_line_length,
+            'experimental': True
         })
 except:
     autopep8 = None
@@ -130,7 +131,7 @@ def serve():
         while True:
             client, addr = server.accept()
             try:
-                request = client.recv(1024 * 1024).decode('utf-8')
+                request = read_message(client)
                 logging.debug('request size: %s' % len(request))
                 if request:
                     handle(client, json.loads(request))
@@ -150,6 +151,17 @@ def serve():
         logging.exception(ex)
     finally:
         server.close()
+
+
+def read_message(client) -> str:
+    data = b''
+    while True:
+        chunk = client.recv(4096)
+        if not chunk:
+            break
+        data += chunk
+
+    return data.decode('utf-8')
 
 
 def main():
