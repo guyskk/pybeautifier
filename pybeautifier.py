@@ -3,7 +3,6 @@ import json
 import logging
 import os
 import socket
-from select import select
 import sys
 
 import daemon
@@ -155,23 +154,14 @@ def serve():
 
 
 def read_message(client) -> str:
-    data = ''
+    data = b''
     while True:
-        try:
-            client.setblocking(0)
-            (r, w, x) = select([client], [], [], 1)
-            if client not in r:  # chunk == ''
-                break
-            chunk = client.recv(4096)  # some 2^n number
-            if not chunk:
-                break
-            data += chunk.decode('utf-8')
-
-        except socket.error as ex:
-            logging.error(ex)
-            client.close()
+        chunk = client.recv(4096)
+        if not chunk:
             break
-    return data
+        data += chunk
+
+    return data.decode('utf-8')
 
 
 def main():
